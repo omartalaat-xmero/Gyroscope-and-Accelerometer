@@ -5,8 +5,8 @@
 
 #include <util/twi.h>
 
-#define F_CPU       8000000UL
-#define SCL_CLOCK   100000UL
+#define F_CPU 8000000UL
+#define SCL_CLOCK 100000UL
 
 void I2C_init(void);
 void I2C_start(void);

@@ -1,9 +1,29 @@
-#ifndef TIMER1 16-BIT_H_
-#define TIMER1 16-BIT_H_
+#ifndef TIMER1_16_BIT_H_
+#define TIMER1_16_BIT_H_
 
 #include "../REGISTER/REGISTER.h"
-#include "TIMER1 16-bit/TIMER1 TIMER1 16-bit Typedef.h"
 #include <stdint.h>
+
+typedef enum {
+	TIMER1_NORMAL,
+	TIMER1_CTC_OCR1A,
+	TIMER1_FAST_PWM_ICR1,
+	TIMER1_FAST_PWM_OCR1A
+} Timer1Mode;
+
+typedef enum {
+	TIMER1_NO_CLOCK,
+	TIMER1_NO_PRESCALER,
+	TIMER1_PRESCALER_8,
+	TIMER1_PRESCALER_64,
+	TIMER1_PRESCALER_256,
+	TIMER1_PRESCALER_1024
+} Timer1Prescaler;
+
+typedef enum {
+	CHANNEL_A,
+	CHANNEL_B
+} Timer1Channel;
 
 void Timer1_Init(Timer1Mode mode, Timer1Prescaler prescaler);
 void Timer1_SetCompareValue(Timer1Channel channel, uint16_t value);
@@ -14,8 +34,5 @@ void Timer1_EnableInterruptCompareMatchB(void);
 void Timer1_SetCallbackOverflow(void (*callback)(void));
 void Timer1_SetCallbackCompareMatchA(void (*callback)(void));
 void Timer1_SetCallbackCompareMatchB(void (*callback)(void));
-void Timer1_GetTime(uint8_t* h, uint8_t* m, uint8_t* s, uint16_t* ms);
-void Timer1_SetTime(uint8_t h, uint8_t m, uint8_t s, uint16_t ms);
 
-
-#endif /* TIMER1 16-BIT_H_ */
+#endif /* TIMER1_16_BIT_H_ */

@@ -1,0 +1,34 @@
+CTC timer can give me tick 1 microsecond
+
+Gyro gives angular speed
+acc gives acc 
+so from MPU we will get (Ax, Ay, Az, gx, gy, gz, pitch, roll)
+from timer1 we will get(HH:MM:SS:mS:µS)
+from reed switch we will get(count, SPM)
+
+******************************************************************************************
+#include <avr/io.h>
+#include <util/delay.h>
+#include "timer1.h"
+#include "stopwatch.h"
+
+int main(void) {
+    uint8_t hours, minutes, seconds;
+    uint16_t milliseconds, microseconds;
+    Timer1_Init(TIMER1_CTC, TIMER1_PRESCALER_8);
+    Timer1_SetCompareValue(TIMER1_CHANNEL_A, 0);
+    Stopwatch_Init();
+    Timer1_EnableInterruptCompareMatchA();
+    sei();
+    while (1) {
+        Stopwatch_GetTime(&hours, &minutes, &seconds, &milliseconds, &microseconds);
+        if (seconds % 2 == 0) {
+            PORTA |= (1 << PA0);  // LED ON
+        } else {
+            PORTA &= ~(1 << PA0); // LED OFF
+        }
+
+        _delay_ms(100); // Delay to reduce flickering
+    }
+} 
+******************************************************************************************

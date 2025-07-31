@@ -3,7 +3,7 @@
 
 #include "../REGISTER/REGISTER.h"
 
-#define F_CPU     8000000UL
+#define F_CPU 8000000UL
 #define BAUD_RATE 9600
 
 void UART_init(void);

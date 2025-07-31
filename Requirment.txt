@@ -1,0 +1,40 @@
+************ Gyroscope and Accelerometer *************
+- Aim:
+	To study acc of each SPM cases by using mpu6050 and reed switch.
+ 
+**************************************************************
+- By using ATM32A and MPU6050: 
+
+1- measures angels in x, y, and z-axis
+2- measures acc in x, y, and z-axis
+3- stopwatch timer
+4- catch counter using magnetic reed switch
+5- calculate SPM
+6- display data on the screen  
+7- Save data in EEPROM
+8- how to call data from EEPROM
+9- monitors data in graphs
+10- Power Supply:
+	1- on/off single push button latch
+	2- battery 3.7V + Solar cell panel + recharge circuit 
+
+*************************************************************
+- Steps:
+
+1- flowchart
+2- interface components in proteus:
+	1- LCD or GLCD -----> parallel connection
+	2- MPU6050 -----> I2C 
+	3- EEPROM -----> UART connection
+3- Coding:
+	Drivers: -----> (ATM32A REG, DIO, LCD, I2C, UART, Timer 8MHz)
+4- implementation
+5- monitors
+6- study data
+7- results
+************************************************************
+LCD:
+SPM,Count
+timer,int
+Ax,Ay,Az
+accx,accy,accz

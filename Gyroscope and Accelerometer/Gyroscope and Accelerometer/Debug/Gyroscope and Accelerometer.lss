@@ -1,0 +1,300 @@
+
+Gyroscope and Accelerometer.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001ee  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000262  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000b  00800060  00800060  00000262  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000262  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000294  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000d8  00000000  00000000  000002d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000a0a  00000000  00000000  000003a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000068d  00000000  00000000  00000db2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000055a  00000000  00000000  0000143f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000214  00000000  00000000  0000199c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006a4  00000000  00000000  00001bb0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000002ed  00000000  00000000  00002254  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a8  00000000  00000000  00002541  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 4a 00 	jmp	0x94	; 0x94 <__vector_7>
+  20:	0c 94 cc 00 	jmp	0x198	; 0x198 <__vector_8>
+  24:	0c 94 a3 00 	jmp	0x146	; 0x146 <__vector_9>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ee ee       	ldi	r30, 0xEE	; 238
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ab 36       	cpi	r26, 0x6B	; 107
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 f5 00 	jmp	0x1ea	; 0x1ea <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+int main(void)
+{
+  92:	ff cf       	rjmp	.-2      	; 0x92 <main>
+
+00000094 <__vector_7>:
+	*ms = stopwatch_milliseconds;
+	*us = stopwatch_microseconds;
+	sei();
+}
+
+ISR(TIMER1_COMPA_vect) {
+  94:	1f 92       	push	r1
+  96:	0f 92       	push	r0
+  98:	0f b6       	in	r0, 0x3f	; 63
+  9a:	0f 92       	push	r0
+  9c:	11 24       	eor	r1, r1
+  9e:	2f 93       	push	r18
+  a0:	8f 93       	push	r24
+  a2:	9f 93       	push	r25
+	stopwatch_microseconds++;
+  a4:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  a8:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  ac:	01 96       	adiw	r24, 0x01	; 1
+  ae:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  b2:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+
+	if (stopwatch_microseconds >= 1000) {
+  b6:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  ba:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  be:	88 3e       	cpi	r24, 0xE8	; 232
+  c0:	93 40       	sbci	r25, 0x03	; 3
+  c2:	c8 f1       	brcs	.+114    	; 0x136 <__vector_7+0xa2>
+		stopwatch_microseconds = 0;
+  c4:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  c8:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+		stopwatch_milliseconds++;
+  cc:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <stopwatch_milliseconds>
+  d0:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <stopwatch_milliseconds+0x1>
+  d4:	01 96       	adiw	r24, 0x01	; 1
+  d6:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <stopwatch_milliseconds+0x1>
+  da:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <stopwatch_milliseconds>
+
+		if (stopwatch_milliseconds >= 1000) {
+  de:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <stopwatch_milliseconds>
+  e2:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <stopwatch_milliseconds+0x1>
+  e6:	88 3e       	cpi	r24, 0xE8	; 232
+  e8:	93 40       	sbci	r25, 0x03	; 3
+  ea:	28 f1       	brcs	.+74     	; 0x136 <__vector_7+0xa2>
+			stopwatch_milliseconds = 0;
+  ec:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <stopwatch_milliseconds+0x1>
+  f0:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <stopwatch_milliseconds>
+			stopwatch_seconds++;
+  f4:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <stopwatch_seconds>
+  f8:	8f 5f       	subi	r24, 0xFF	; 255
+  fa:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <stopwatch_seconds>
+
+			if (stopwatch_seconds >= 60) {
+  fe:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <stopwatch_seconds>
+ 102:	8c 33       	cpi	r24, 0x3C	; 60
+ 104:	c0 f0       	brcs	.+48     	; 0x136 <__vector_7+0xa2>
+				stopwatch_seconds = 0;
+ 106:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <stopwatch_seconds>
+				stopwatch_minutes++;
+ 10a:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <stopwatch_minutes>
+ 10e:	8f 5f       	subi	r24, 0xFF	; 255
+ 110:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <stopwatch_minutes>
+
+				if (stopwatch_minutes >= 60) {
+ 114:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <stopwatch_minutes>
+ 118:	8c 33       	cpi	r24, 0x3C	; 60
+ 11a:	68 f0       	brcs	.+26     	; 0x136 <__vector_7+0xa2>
+					stopwatch_minutes = 0;
+ 11c:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <stopwatch_minutes>
+					stopwatch_hours++;
+ 120:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <stopwatch_hours>
+ 124:	8f 5f       	subi	r24, 0xFF	; 255
+ 126:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <stopwatch_hours>
+
+					if (stopwatch_hours >= 24)
+ 12a:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <stopwatch_hours>
+ 12e:	88 31       	cpi	r24, 0x18	; 24
+ 130:	10 f0       	brcs	.+4      	; 0x136 <__vector_7+0xa2>
+					stopwatch_hours = 0;
+ 132:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <stopwatch_hours>
+				}
+			}
+		}
+	}
+ 136:	9f 91       	pop	r25
+ 138:	8f 91       	pop	r24
+ 13a:	2f 91       	pop	r18
+ 13c:	0f 90       	pop	r0
+ 13e:	0f be       	out	0x3f, r0	; 63
+ 140:	0f 90       	pop	r0
+ 142:	1f 90       	pop	r1
+ 144:	18 95       	reti
+
+00000146 <__vector_9>:
+/*
+	This ISR is triggered automatically when Timer1 overflows (TCNT1 reaches 0xFFFF and rolls back to 0).
+	It checks if a callback function has been assigned using Timer1_SetCallbackOverflow(), and if so, it calls that function.
+*/
+
+ISR(TIMER1_OVF_vect){
+ 146:	1f 92       	push	r1
+ 148:	0f 92       	push	r0
+ 14a:	0f b6       	in	r0, 0x3f	; 63
+ 14c:	0f 92       	push	r0
+ 14e:	11 24       	eor	r1, r1
+ 150:	2f 93       	push	r18
+ 152:	3f 93       	push	r19
+ 154:	4f 93       	push	r20
+ 156:	5f 93       	push	r21
+ 158:	6f 93       	push	r22
+ 15a:	7f 93       	push	r23
+ 15c:	8f 93       	push	r24
+ 15e:	9f 93       	push	r25
+ 160:	af 93       	push	r26
+ 162:	bf 93       	push	r27
+ 164:	ef 93       	push	r30
+ 166:	ff 93       	push	r31
+	if (overflowCallback)
+ 168:	e0 91 69 00 	lds	r30, 0x0069	; 0x800069 <overflowCallback>
+ 16c:	f0 91 6a 00 	lds	r31, 0x006A	; 0x80006a <overflowCallback+0x1>
+ 170:	30 97       	sbiw	r30, 0x00	; 0
+ 172:	09 f0       	breq	.+2      	; 0x176 <__vector_9+0x30>
+	overflowCallback(); // Call the user-defined overflow handler (if set)
+ 174:	09 95       	icall
+}
+ 176:	ff 91       	pop	r31
+ 178:	ef 91       	pop	r30
+ 17a:	bf 91       	pop	r27
+ 17c:	af 91       	pop	r26
+ 17e:	9f 91       	pop	r25
+ 180:	8f 91       	pop	r24
+ 182:	7f 91       	pop	r23
+ 184:	6f 91       	pop	r22
+ 186:	5f 91       	pop	r21
+ 188:	4f 91       	pop	r20
+ 18a:	3f 91       	pop	r19
+ 18c:	2f 91       	pop	r18
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <__vector_8>:
+	This ISR is triggered when Timer1's counter (TCNT1) matches the value in OCR1B.
+	It can be used in CTC or PWM modes where a second compare channel is useful (e.g., dual event timing).
+	It checks if a callback function has been assigned using Timer1_SetCallbackCompareMatchB(), and if so, it calls that function.
+*/
+
+ISR(TIMER1_COMPB_vect){
+ 198:	1f 92       	push	r1
+ 19a:	0f 92       	push	r0
+ 19c:	0f b6       	in	r0, 0x3f	; 63
+ 19e:	0f 92       	push	r0
+ 1a0:	11 24       	eor	r1, r1
+ 1a2:	2f 93       	push	r18
+ 1a4:	3f 93       	push	r19
+ 1a6:	4f 93       	push	r20
+ 1a8:	5f 93       	push	r21
+ 1aa:	6f 93       	push	r22
+ 1ac:	7f 93       	push	r23
+ 1ae:	8f 93       	push	r24
+ 1b0:	9f 93       	push	r25
+ 1b2:	af 93       	push	r26
+ 1b4:	bf 93       	push	r27
+ 1b6:	ef 93       	push	r30
+ 1b8:	ff 93       	push	r31
+	if (compareMatchBCallback)
+ 1ba:	e0 91 67 00 	lds	r30, 0x0067	; 0x800067 <compareMatchBCallback>
+ 1be:	f0 91 68 00 	lds	r31, 0x0068	; 0x800068 <compareMatchBCallback+0x1>
+ 1c2:	30 97       	sbiw	r30, 0x00	; 0
+ 1c4:	09 f0       	breq	.+2      	; 0x1c8 <__vector_8+0x30>
+	compareMatchBCallback(); // Call the user-defined Compare Match B handler (if set)
+ 1c6:	09 95       	icall
+}
+ 1c8:	ff 91       	pop	r31
+ 1ca:	ef 91       	pop	r30
+ 1cc:	bf 91       	pop	r27
+ 1ce:	af 91       	pop	r26
+ 1d0:	9f 91       	pop	r25
+ 1d2:	8f 91       	pop	r24
+ 1d4:	7f 91       	pop	r23
+ 1d6:	6f 91       	pop	r22
+ 1d8:	5f 91       	pop	r21
+ 1da:	4f 91       	pop	r20
+ 1dc:	3f 91       	pop	r19
+ 1de:	2f 91       	pop	r18
+ 1e0:	0f 90       	pop	r0
+ 1e2:	0f be       	out	0x3f, r0	; 63
+ 1e4:	0f 90       	pop	r0
+ 1e6:	1f 90       	pop	r1
+ 1e8:	18 95       	reti
+
+000001ea <_exit>:
+ 1ea:	f8 94       	cli
+
+000001ec <__stop_program>:
+ 1ec:	ff cf       	rjmp	.-2      	; 0x1ec <__stop_program>
