@@ -1,12 +1,12 @@
-#include "../LCD/LCD.h"
+#include "LCD.h"
 
 void lcd_init(){
-	DDRA = 0xFF;   // Configure PORTA as output for data and RS
+	DDRA = 0xFF;
 	DDRB |= (1 << 1);
 	DDRB |= (1 << 0);
-	lcd_cmd(0x38); // 8-bit, 2 lines, 5x7 dots
-	lcd_cmd(0x0F); // Display ON, Cursor ON, Blink ON
-	lcd_cmd(0x01); // Clear display
+	lcd_cmd(0x38);
+	lcd_cmd(0x0F);
+	lcd_cmd(0x01);
 	_delay_ms(2);
 	lcd_cmd(0x83);
 	lcd_print("SPM");
@@ -17,8 +17,8 @@ void lcd_init(){
 }
 
 void lcd_cmd (unsigned char cmd){
-	PORTB &= ~(1 << 1);  // RS = 0 for command
-	PORTA = cmd; // Send command to A7-
+	PORTB &= ~(1 << 1);  // RS = 0
+	PORTA = cmd;
 	PORTB |= (1 << 0);   // E = 1
 	_delay_us(1);
 	PORTB &= ~(1 << 0);  // E = 0
@@ -26,16 +26,16 @@ void lcd_cmd (unsigned char cmd){
 }
 
 void lcd_data (unsigned char data){
-	PORTB |= (1 << 1);   // RS = 1 for data
-	PORTA = data; // Send data to A7-A0
+	PORTB |= (1 << 1);   // RS = 1
+	PORTA = data;
 	_delay_us(1);
-	PORTB |= (1 << 0);   // E =
+	PORTB |= (1 << 0);   // E = 1
 	PORTB &= ~(1 << 0);  // E = 0
 	_delay_ms(2);
 }
 void lcd_data_t (unsigned char data){
-	PORTB |= (1 << 1);   // RS = 1 for data
-	PORTA = data; // Send data to A7-A0
+	PORTB |= (1 << 1);   // RS = 1
+	PORTA = data;
 	_delay_us(1);
 	PORTB |= (1 << 0);   // E = 1
 	PORTB &= ~(1 << 0);  // E = 0
@@ -74,16 +74,15 @@ void lcd_print_time_line2_centered(uint8_t hours, uint8_t minutes, uint8_t secon
 }
 
 void lcd_print_count_line1_last9(uint16_t number) {
-	char buffer[5];   // Enough for 4 digits + null terminator
-	char padded[5] = "    ";  // Start with 4 spaces
+	char buffer[5];
+	char padded[5] = "    ";
 
-	itoa(number, buffer, 10);  // Convert number to string (base 10)
+	itoa(number, buffer, 10);
 
-	// Copy the number string to the end of padded buffer
 	size_t len = strlen(buffer);
 	memcpy(&padded[4 - len], buffer, len);
 
-	lcd_cmd(0x87);  // Position 7 in line 1
+	lcd_cmd(0x87);
 	for (uint8_t i = 0; i < 4; i++) {
 		lcd_data(padded[i]);
 	}

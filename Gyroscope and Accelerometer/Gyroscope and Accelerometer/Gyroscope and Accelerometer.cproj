@@ -132,16 +132,22 @@
     <Compile Include="DIO\DIO.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="FT232RL\FT232RL.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FT232RL\FT232RL.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="I2C\I2C.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="I2C\I2C.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LCD\LCD.c">
+    <Compile Include="LCD16x2\LCD.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LCD\LCD.h">
+    <Compile Include="LCD16x2\LCD.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -192,10 +198,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DIO" />
-    <Folder Include="LCD" />
+    <Folder Include="LCD16x2" />
     <Folder Include="I2C" />
     <Folder Include="MPU6050" />
     <Folder Include="ATM32A EEPROM" />
+    <Folder Include="FT232RL" />
     <Folder Include="Stopwatch" />
     <Folder Include="OpenLog" />
     <Folder Include="UART" />

@@ -34,10 +34,11 @@ LINKER_SCRIPT_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../DIO \
-../LCD \
+../LCD16x2 \
 ../I2C \
 ../MPU6050 \
 ../ATM32A\ EEPROM \
+../FT232RL \
 ../Stopwatch \
 ../OpenLog \
 ../UART \
@@ -49,8 +50,9 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../ATM32A\ EEPROM/ATM32A\ EEPROM.c \
 ../DIO/DIO.c \
+../FT232RL/FT232RL.c \
 ../I2C/I2C.c \
-../LCD/LCD.c \
+../LCD16x2/LCD.c \
 ../main.c \
 ../MPU6050/MPU6050.c \
 ../OpenLog/OpenLog.c \
@@ -68,8 +70,9 @@ ASM_SRCS +=
 OBJS +=  \
 ATM32A\ EEPROM/ATM32A\ EEPROM.o \
 DIO/DIO.o \
+FT232RL/FT232RL.o \
 I2C/I2C.o \
-LCD/LCD.o \
+LCD16x2/LCD.o \
 main.o \
 MPU6050/MPU6050.o \
 OpenLog/OpenLog.o \
@@ -80,8 +83,9 @@ UART/UART.o
 OBJS_AS_ARGS +=  \
 "ATM32A EEPROM/ATM32A EEPROM.o" \
 DIO/DIO.o \
+FT232RL/FT232RL.o \
 I2C/I2C.o \
-LCD/LCD.o \
+LCD16x2/LCD.o \
 main.o \
 MPU6050/MPU6050.o \
 OpenLog/OpenLog.o \
@@ -92,8 +96,9 @@ UART/UART.o
 C_DEPS +=  \
 ATM32A\ EEPROM/ATM32A\ EEPROM.d \
 DIO/DIO.d \
+FT232RL/FT232RL.d \
 I2C/I2C.d \
-LCD/LCD.d \
+LCD16x2/LCD.d \
 main.d \
 MPU6050/MPU6050.d \
 OpenLog/OpenLog.d \
@@ -104,8 +109,9 @@ UART/UART.d
 C_DEPS_AS_ARGS +=  \
 "ATM32A EEPROM/ATM32A EEPROM.d" \
 DIO/DIO.d \
+FT232RL/FT232RL.d \
 I2C/I2C.d \
-LCD/LCD.d \
+LCD16x2/LCD.d \
 main.d \
 MPU6050/MPU6050.d \
 OpenLog/OpenLog.d \
@@ -141,6 +147,13 @@ DIO/DIO.o: ../DIO/DIO.c
 	@echo Finished building: $<
 	
 
+FT232RL/FT232RL.o: ../FT232RL/FT232RL.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 I2C/I2C.o: ../I2C/I2C.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -148,7 +161,7 @@ I2C/I2C.o: ../I2C/I2C.c
 	@echo Finished building: $<
 	
 
-LCD/LCD.o: ../LCD/LCD.c
+LCD16x2/LCD.o: ../LCD16x2/LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

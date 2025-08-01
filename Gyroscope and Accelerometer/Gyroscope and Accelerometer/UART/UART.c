@@ -1,4 +1,4 @@
-#include "../UART/UART.h"
+#include "UART.h"
 /*
 	This function sets up the UART peripheral for serial communication.
 	It uses a predefined F_CPU (CPU clock frequency) and BAUD_RATE to set the correct baud rate.
