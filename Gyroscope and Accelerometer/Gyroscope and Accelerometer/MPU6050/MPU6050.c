@@ -9,6 +9,7 @@
 static void MPU6050_Read_Multi(uint8_t reg, uint8_t* data, uint8_t length);
 
 void MPU6050_Init(void) {
+	I2C_init();
 	I2C_start();
 	I2C_write((MPU6050_ADDR << 1) | 0);
 	I2C_write(MPU6050_PWR_MGMT_1);

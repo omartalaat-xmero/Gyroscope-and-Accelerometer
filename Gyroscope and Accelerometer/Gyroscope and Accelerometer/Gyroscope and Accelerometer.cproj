@@ -186,9 +186,6 @@
     <Compile Include="TIMER1 16-bit\TIMER1 16-bit.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="TIMER1 16-bit\TIMER1 16-bit Typedef.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="UART\UART.c">
       <SubType>compile</SubType>
     </Compile>

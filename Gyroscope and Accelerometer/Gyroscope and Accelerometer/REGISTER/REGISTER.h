@@ -5,25 +5,25 @@
 
 #include "Typedef.h"
 
-#define TIFR *((volatile unit8_t*)0x58)
-#define TCCR0 *((volatile unit8_t*)0x53)
-#define TCNT0 *((volatile unit8_t*)0x52)
+#define TIFR *((volatile uint8_t*)0x58)
+#define TCCR0 *((volatile uint8_t*)0x53)
+#define TCNT0 *((volatile uint8_t*)0x52)
 
-#define PORTA *((volatile unit8_t*)0x3B)
-#define DDRA *((volatile unit8_t*)0x3A)
-#define PINA *((volatile unit8_t*)0x39)
+#define PORTA *((volatile uint8_t*)0x3B)
+#define DDRA *((volatile uint8_t*)0x3A)
+#define PINA *((volatile uint8_t*)0x39)
 
-#define PORTB *((volatile unit8_t*)0x38)
-#define DDRB *((volatile unit8_t*)0x37)
-#define PINB *((volatile unit8_t*)0x36)
+#define PORTB *((volatile uint8_t*)0x38)
+#define DDRB *((volatile uint8_t*)0x37)
+#define PINB *((volatile uint8_t*)0x36)
 
-#define PORTC *((volatile unit8_t*)0x35)
-#define DDRC *((volatile unit8_t*)0x34)
-#define PINC *((volatile unit8_t*)0x33)
+#define PORTC *((volatile uint8_t*)0x35)
+#define DDRC *((volatile uint8_t*)0x34)
+#define PINC *((volatile uint8_t*)0x33)
 
-#define PORTD *((volatile unit8_t*)0x32)
-#define DDRD *((volatile unit8_t*)0x31)
-#define PIND *((volatile unit8_t*)0x30)
+#define PORTD *((volatile uint8_t*)0x32)
+#define DDRD *((volatile uint8_t*)0x31)
+#define PIND *((volatile uint8_t*)0x30)
 
 #define TWBR    _SFR_IO8(0x20)
 #define TWSR    _SFR_IO8(0x21)

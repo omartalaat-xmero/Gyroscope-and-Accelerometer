@@ -1,6 +1,6 @@
 #include "../DIO/DIO.h"
 
-void DIO_init(unit8_t pinnumber, unit8_t portnumber, unit8_t direction){
+void DIO_init(uint8_t pinnumber, uint8_t portnumber, uint8_t direction){
 	switch(portnumber){
 		case PORT_A:
 		if (direction == IN){
@@ -49,7 +49,7 @@ void DIO_init(unit8_t pinnumber, unit8_t portnumber, unit8_t direction){
 	}
 }
 
-void DIO_write(unit8_t pinnumber, unit8_t portnumber, unit8_t value){
+void DIO_write(uint8_t pinnumber, uint8_t portnumber, uint8_t value){
 	switch(portnumber){
 		case PORT_A:
 		if (value == LOW){
@@ -98,7 +98,7 @@ void DIO_write(unit8_t pinnumber, unit8_t portnumber, unit8_t value){
 	}
 }
 
-void DIO_toggel(unit8_t pinnumber, unit8_t portnumber){
+void DIO_toggel(uint8_t pinnumber, uint8_t portnumber){
 	switch(portnumber){
 		case PORT_A:
 		PORTA ^= (1<<pinnumber);
@@ -116,7 +116,7 @@ void DIO_toggel(unit8_t pinnumber, unit8_t portnumber){
 	
 }
 
-void DIO_read(unit8_t pinnumber, unit8_t portnumber,  unit8_t *value){
+void DIO_read(uint8_t pinnumber, uint8_t portnumber,  uint8_t *value){
 	switch(portnumber) {
 		case PORT_A:
 		*value = (PINA & (1 << pinnumber)) ? HIGH : LOW;
